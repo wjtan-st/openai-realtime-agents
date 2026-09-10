@@ -28,6 +28,7 @@ import { customerServiceRetailCompanyName } from "@/app/agentConfigs/customerSer
 import { chatSupervisorCompanyName } from "@/app/agentConfigs/chatSupervisor";
 import { simpleHandoffScenario } from "@/app/agentConfigs/simpleHandoff";
 import { mediacorpScenario, mediacorpCompanyName } from "@/app/agentConfigs/mediacorp";
+import { resetBackendSession } from "@/app/agentConfigs/mediacorp/backendAgent";
 
 // Map used by connect logic for scenarios defined via the SDK.
 const sdkScenarioMap: Record<string, RealtimeAgent[]> = {
@@ -240,6 +241,7 @@ function App() {
 
   const disconnectFromRealtime = () => {
     disconnect();
+    resetBackendSession();
     setSessionStatus("DISCONNECTED");
     setIsPTTUserSpeaking(false);
   };
